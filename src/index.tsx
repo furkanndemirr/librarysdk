@@ -20,3 +20,14 @@ const Librarysdk = NativeModules.Librarysdk
 export function multiply(a: number, b: number): Promise<number> {
   return Librarysdk.multiply(a, b);
 }
+export function addNumbers(a: number, b: number): Promise<number> {
+  return Librarysdk.addNumbers(a, b);
+}
+export function initializeTuracSDK(apiKey: string): Promise<string> {
+  if (typeof apiKey !== 'string' || !apiKey.trim()) {
+    return Promise.reject(
+      new Error('API key must be a valid non-empty string.')
+    );
+  }
+  return Librarysdk.initializeTuracSDK(apiKey);
+}

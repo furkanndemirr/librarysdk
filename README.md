@@ -10,7 +10,6 @@ npm install react-native-librarysdk
 
 ## Usage
 
-
 ```js
 import { multiply } from 'react-native-librarysdk';
 
@@ -18,7 +17,6 @@ import { multiply } from 'react-native-librarysdk';
 
 const result = await multiply(3, 7);
 ```
-
 
 ## Contributing
 
