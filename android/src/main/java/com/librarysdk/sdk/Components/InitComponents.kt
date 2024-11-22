@@ -2,6 +2,7 @@ package com.librarysdk.sdk.Components
 import com.librarysdk.sdk.Constants.PermissionStatus
 import com.librarysdk.sdk.Constants.PermissionType
 import com.librarysdk.sdk.Contents.DeviceInfo
+import com.librarysdk.sdk.Contents.DeviceInfo.getDeviceDetails
 import com.librarysdk.sdk.Contents.InitServices
 import com.librarysdk.sdk.Contents.InitServices.checkPermissionService
 import com.librarysdk.sdk.Contents.InitServices.deviceAddService
@@ -33,8 +34,8 @@ object InitComponents {
                             PrefHelper.putString(PrefHelper.PhoneNumber, "234566")
                             PrefHelper.putString(PrefHelper.Imei, "deneme")
                             val deviceId : String = DeviceInfo.getDeviceId()
-                            if (PrefHelper.getString(PrefHelper.DeviceId) != deviceId) {
-                                val device = Device()
+                            if (PrefHelper.getString(PrefHelper.DeviceId) == deviceId) {
+                                var device = getDeviceDetails(getContext())
                                 device.loginEmail = loginEmail
                                 device.loginMsisdn = loginPhone
                                 deviceAddService(device, object : ResponseCallback {

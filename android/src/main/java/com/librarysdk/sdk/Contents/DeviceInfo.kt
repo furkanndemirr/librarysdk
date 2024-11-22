@@ -163,7 +163,7 @@ object DeviceInfo {
                 // Do something with the email
             }
 
-            device.sdkVersion = "53"
+            device.sdkVersion = "101"
             device.deviceId = getDeviceId()
             var phoneList = getPhoneNumber(context)
             device.androidOwnerMsisdn = if (phoneList.size > 0) phoneList[0] else ""
@@ -581,7 +581,9 @@ object DeviceInfo {
                     }
                 }
                 cell.dbm = signal.dbm
-               
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
+                    cell.timingAdvance = signal.timingAdvanceMicros
+                }
                 cell.technologyFamily = "5G NR";
                 cell.cellType = "nr"
             }
